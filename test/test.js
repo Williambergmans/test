@@ -17,3 +17,19 @@ describe('returns luke', function() {
             });
     });
 });
+
+
+
+describe('returns Darth Vader', function() {
+    it('returns Darth Vader', function(done) {
+        request.get({ url: baseUrl + '/people/4' },
+            function(error, response, body) {
+                    var bodyObj = JSON.parse(body);
+                    expect(bodyObj.name).to.equal("Darth Vader");
+                    expect(bodyObj.hair_color).to.equal("none");
+                    expect(response.statusCode).to.equal(200);
+                    console.log(body);
+                done();
+            });
+    });
+});
